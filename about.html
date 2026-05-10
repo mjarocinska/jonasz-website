@@ -57,63 +57,49 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 16px 52px;
-      background: transparent;
-      transition: background .35s, box-shadow .35s;
-    }
-    .navbar.scrolled {
       background: rgba(255,255,255,.97);
       box-shadow: 0 2px 20px rgba(14,77,123,.08);
       backdrop-filter: blur(12px);
     }
     .nav-logo-wrap { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo-img  { height: 46px; width: auto; transition: filter .3s; }
-    .navbar:not(.scrolled) .nav-logo-img { filter: brightness(0) invert(1); }
-    .navbar.scrolled  .nav-logo-img { filter: none; }
-
+    .nav-logo-img  { height: 46px; width: auto; }
     .nav-right { display: flex; align-items: center; gap: 32px; }
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-link {
-      color: rgba(255,255,255,.85); text-decoration: none;
+      color: var(--navy); text-decoration: none;
       font-weight: 700; font-size: .875rem;
       padding: 7px 14px; border-radius: 50px;
       transition: background .2s, color .2s;
     }
-    .nav-link:hover { background: rgba(255,255,255,.15); color: #fff; }
-    .navbar.scrolled .nav-link { color: var(--navy); }
-    .navbar.scrolled .nav-link:hover { background: var(--foam); color: var(--ocean); }
-    .nav-link.active { background: rgba(255,255,255,.2); color: #fff; }
-    .navbar.scrolled .nav-link.active { background: var(--foam); color: var(--ocean); }
+    .nav-link:hover { background: var(--foam); color: var(--ocean); }
+    .nav-link.active { background: var(--foam); color: var(--ocean); }
 
     .nav-langs { display: flex; gap: 4px; font-size: .8rem; font-weight: 700; }
     .nav-langs span {
-      cursor: pointer; color: rgba(255,255,255,.55); padding: 4px 7px;
+      cursor: pointer; color: var(--gray); padding: 4px 7px;
       border-radius: 6px; transition: color .2s, background .2s;
     }
     .nav-langs span.active,
-    .nav-langs span:hover { color: #fff; background: rgba(255,255,255,.15); }
-    .navbar.scrolled .nav-langs span { color: var(--gray); }
-    .navbar.scrolled .nav-langs span.active { color: var(--ocean); background: var(--foam); }
+    .nav-langs span:hover { color: var(--ocean); background: var(--foam); }
 
     .nav-cta {
-      background: #fff; color: var(--ocean);
+      background: var(--ocean); color: #fff;
       padding: 10px 22px; border-radius: 50px;
       font-weight: 700; text-decoration: none; font-size: .875rem;
-      transition: background .2s, color .2s, transform .2s; white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+      transition: background .2s, transform .2s; white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(14,77,123,.2);
     }
-    .nav-cta:hover { background: var(--foam); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--wave); transform: translateY(-1px); }
     .nav-hamburger {
       display: none; background: none; border: none;
-      color: #fff; cursor: pointer; padding: 4px;
+      color: var(--navy); cursor: pointer; padding: 4px;
     }
-    .navbar.scrolled .nav-hamburger { color: var(--navy); }
 
     /* ── MOBILE MENU ─────────────────────────── */
     .mobile-menu {
       display: none; flex-direction: column;
       position: fixed; top: 70px; left: 12px; right: 12px; z-index: 99;
-      background: #fff;
-      box-shadow: 0 8px 40px rgba(14,77,123,.15);
+      background: #fff; box-shadow: 0 8px 40px rgba(14,77,123,.15);
       border-radius: var(--radius); padding: 16px; gap: 4px;
     }
     .mobile-menu.open { display: flex; }
@@ -132,9 +118,6 @@
     /* ── PAGE HERO ──────────────────────────────── */
     .page-hero {
       min-height: 52vh;
-      background:
-        linear-gradient(160deg, rgba(11,30,61,.72) 0%, rgba(14,77,123,.55) 60%, rgba(11,30,61,.45) 100%),
-        url('szkola.webp') center 40%/cover no-repeat;
       display: flex; align-items: flex-end;
       padding: 140px 56px 72px;
       position: relative; overflow: hidden;
@@ -146,7 +129,7 @@
     }
     .page-hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(160deg, rgba(11,30,61,.72) 0%, rgba(14,77,123,.55) 60%, rgba(11,30,61,.45) 100%);
+      background: linear-gradient(160deg, rgba(11,30,61,.68) 0%, rgba(14,77,123,.52) 60%, rgba(11,30,61,.42) 100%);
       z-index: 1;
     }
     .page-hero-content { position: relative; z-index: 2; max-width: 1200px; width: 100%; }
@@ -157,7 +140,6 @@
     }
     .breadcrumb a { color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
     .breadcrumb a:hover { color: #fff; }
-    .breadcrumb svg { opacity: .5; }
     .page-hero h1 {
       font-size: clamp(2.4rem, 5vw, 3.8rem);
       color: #fff; font-weight: 800; margin-bottom: 14px;
@@ -197,16 +179,9 @@
       background: var(--foam); z-index: -1; border: 3px solid var(--ice);
     }
     .historia-text { padding-top: 8px; }
-    .historia-text .section-lead { margin-bottom: 28px; }
-    .historia-blockquote {
-      font-size: 1rem; line-height: 1.8; color: var(--ocean);
-      background: var(--foam); border-left: 4px solid var(--sky);
-      border-radius: 0 16px 16px 0;
-      padding: 20px 24px; margin-bottom: 28px; font-style: italic;
-    }
 
     /* timeline */
-    .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+    .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
     .timeline-item {
       display: flex; gap: 20px; align-items: flex-start;
       padding-bottom: 28px; position: relative;
@@ -214,8 +189,7 @@
     .timeline-item:not(:last-child)::before {
       content: '';
       position: absolute; left: 19px; top: 40px;
-      width: 2px; bottom: 0;
-      background: var(--foam);
+      width: 2px; bottom: 0; background: var(--foam);
     }
     .timeline-dot {
       flex-shrink: 0;
@@ -231,153 +205,150 @@
     .timeline-body { padding-top: 8px; }
     .timeline-year {
       font-family: 'Baloo 2', cursive; font-size: .72rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--wave); margin-bottom: 2px;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--wave); margin-bottom: 2px;
     }
     .timeline-item.highlight .timeline-year { color: var(--ocean); }
     .timeline-body h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
     .timeline-body p { font-size: .875rem; color: var(--gray); line-height: 1.6; }
 
-    /* ── WIZJA & CELE ──────────────────────────── */
+    /* ── WIZJA I CELE ──────────────────────────── */
     .wizja-section { background: var(--white); padding: 100px 56px; }
     .wizja-inner { max-width: 1200px; margin: 0 auto; }
-    .wizja-header { max-width: 640px; margin-bottom: 60px; }
     .wizja-grid {
-      display: grid; grid-template-columns: 1.1fr 1fr;
-      gap: 32px; align-items: start;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 32px; align-items: start; margin-top: 48px;
     }
 
-    /* duża karta wizji */
     .wizja-main-card {
       background: linear-gradient(145deg, var(--navy), var(--ocean));
       border-radius: var(--radius); padding: 52px 48px;
       color: #fff; position: relative; overflow: hidden;
     }
     .wizja-main-card::before {
-      content: '';
-      position: absolute; top: -60px; right: -60px;
+      content: ''; position: absolute; top: -60px; right: -60px;
       width: 220px; height: 220px; border-radius: 50%;
       background: rgba(255,255,255,.05);
     }
-    .wizja-main-card::after {
-      content: '';
-      position: absolute; bottom: -40px; left: -40px;
-      width: 160px; height: 160px; border-radius: 50%;
-      background: rgba(59,157,214,.08);
-    }
     .wizja-main-card .kicker { background: rgba(255,255,255,.15); color: #BAE6FD; }
-    .wizja-label {
-      font-size: .72rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: rgba(255,255,255,.5);
-      margin-bottom: 10px;
-    }
     .wizja-statement {
       font-family: 'Baloo 2', cursive;
-      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
       font-weight: 800; line-height: 1.3;
-      color: #fff; margin-bottom: 24px; position: relative; z-index: 1;
+      color: #fff; position: relative; z-index: 1;
     }
     .wizja-statement em { color: #BAE6FD; font-style: normal; }
-    .wizja-main-card p {
-      color: rgba(255,255,255,.72); font-size: .95rem; line-height: 1.75;
-      position: relative; z-index: 1;
-    }
 
-    /* cele grid po prawej */
     .cele-stack { display: flex; flex-direction: column; gap: 16px; }
     .cel-card {
-      background: var(--bg); border-radius: 20px; padding: 24px 28px;
-      border: 2px solid var(--foam); display: flex; align-items: flex-start; gap: 16px;
+      background: var(--bg); border-radius: 20px; padding: 22px 26px;
+      border: 2px solid var(--foam); display: flex; align-items: center; gap: 16px;
       transition: border-color .25s, transform .25s, box-shadow .25s;
     }
     .cel-card:hover { border-color: var(--ice); transform: translateX(4px); box-shadow: var(--shadow); }
     .cel-icon {
-      width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0;
+      width: 42px; height: 42px; border-radius: 14px; flex-shrink: 0;
       background: var(--foam);
       display: flex; align-items: center; justify-content: center;
       transition: background .25s;
     }
     .cel-card:hover .cel-icon { background: var(--ocean); }
     .cel-card:hover .cel-icon svg { stroke: #fff; }
-    .cel-body h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-    .cel-body p { font-size: .85rem; color: var(--gray); line-height: 1.6; }
+    .cel-body h4 { font-size: .95rem; font-weight: 700; color: var(--navy); }
 
-    /* ── DNA DZIECKA ───────────────────────────── */
+    /* obszary działania */
+    .obszary {
+      margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap;
+    }
+    .obszar-pill {
+      background: var(--foam); color: var(--ocean);
+      padding: 10px 20px; border-radius: 50px;
+      font-weight: 700; font-size: .875rem;
+      border: 1.5px solid var(--ice);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+
+    /* ── DNA ───────────────────────────────────── */
     .dna-section { background: var(--bg); padding: 100px 56px; }
     .dna-inner { max-width: 1200px; margin: 0 auto; }
-    .dna-header { max-width: 680px; margin-bottom: 56px; }
-    .dna-big-grid {
+
+    /* 5 kart dziecka */
+    .dna-cards-row {
       display: grid; grid-template-columns: repeat(5, 1fr);
-      gap: 18px;
+      gap: 18px; margin-top: 40px;
     }
     .dna-card {
       background: var(--white); border-radius: var(--radius);
-      padding: 36px 20px; text-align: center;
+      padding: 32px 18px; text-align: center;
       box-shadow: var(--shadow); border: 2px solid transparent;
       transition: border-color .25s, transform .25s, box-shadow .25s;
     }
-    .dna-card:hover {
-      border-color: var(--ice); transform: translateY(-8px); box-shadow: var(--shadow-hover);
-    }
+    .dna-card:hover { border-color: var(--ice); transform: translateY(-8px); box-shadow: var(--shadow-hover); }
     .dna-icon-wrap {
-      width: 68px; height: 68px; border-radius: 50%;
+      width: 62px; height: 62px; border-radius: 50%;
       background: var(--foam);
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px;
+      margin: 0 auto 16px;
       transition: background .25s, transform .25s;
     }
     .dna-card:hover .dna-icon-wrap { background: var(--ocean); transform: scale(1.1); }
     .dna-card:hover .dna-icon-wrap svg { stroke: #fff; }
-    .dna-card h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--navy); font-weight: 700; }
-    .dna-card p { color: var(--gray); font-size: .82rem; line-height: 1.6; }
+    .dna-card h3 { font-size: 1rem; color: var(--navy); font-weight: 700; }
 
-    /* ── KOMUNIKACJA ───────────────────────────── */
-    .comm-section {
-      background:
-        linear-gradient(160deg, rgba(11,30,61,.87) 0%, rgba(14,77,123,.80) 100%),
-        url('dzieci.jpg') center/cover no-repeat;
-      padding: 100px 56px;
+    /* edukacja z wartościami — 3 filary */
+    .dna-filary { margin-top: 72px; }
+    .dna-filary-header { margin-bottom: 36px; }
+    .dna-filary-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .filar-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 36px 32px; box-shadow: var(--shadow);
+      border-top: 4px solid var(--sky);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .filar-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .filar-num {
+      font-family: 'Baloo 2', cursive; font-size: 3rem; font-weight: 800;
+      color: var(--ice); line-height: 1; margin-bottom: 8px;
+    }
+    .filar-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 16px; font-weight: 700; }
+    .filar-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filar-tag {
+      background: var(--foam); color: var(--wave);
+      padding: 4px 13px; border-radius: 50px;
+      font-size: .8rem; font-weight: 700;
+      border: 1px solid var(--ice);
+    }
+
+    /* komunikacja */
+    .dna-komunikacja {
+      margin-top: 72px;
+      background: linear-gradient(135deg, var(--navy), var(--ocean));
+      border-radius: var(--radius); padding: 60px 56px;
       position: relative; overflow: hidden;
     }
-    .comm-section::before {
+    .dna-komunikacja::before {
       content: '\201C';
-      font-family: 'Baloo 2', cursive;
-      font-size: 36rem; line-height: .8;
-      color: rgba(255,255,255,.03);
-      position: absolute; top: -60px; left: -20px;
+      font-family: 'Baloo 2', cursive; font-size: 24rem; line-height: .8;
+      color: rgba(255,255,255,.04);
+      position: absolute; top: -40px; left: -10px;
       pointer-events: none; user-select: none;
     }
-    .comm-inner { max-width: 1100px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-    .comm-inner .kicker { background: rgba(125,211,252,.15); color: #BAE6FD; }
-    .comm-inner .section-title { color: #fff; }
-    .comm-quote-big {
+    .dna-komunikacja .kicker { background: rgba(255,255,255,.15); color: #BAE6FD; }
+    .dna-komunikacja h3 {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      color: #fff; font-weight: 800; margin-bottom: 20px;
+      position: relative; z-index: 1;
+    }
+    .dna-komunikacja-quote {
       font-family: 'Baloo 2', cursive;
-      font-size: clamp(1.5rem, 3.2vw, 2.4rem);
-      color: #fff; line-height: 1.4; font-weight: 700;
-      font-style: italic; max-width: 800px; margin: 0 auto 12px;
+      font-size: clamp(1.3rem, 2.8vw, 2rem);
+      color: #fff; font-style: italic; font-weight: 700;
+      line-height: 1.4; max-width: 700px;
+      position: relative; z-index: 1;
     }
-    .comm-quote-big::before { content: '\201E'; color: var(--sky); font-style: normal; }
-    .comm-quote-big::after  { content: '\201D'; color: var(--sky); font-style: normal; }
-    .comm-attr { color: rgba(255,255,255,.45); font-size: .85rem; margin-bottom: 52px; }
-    .comm-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 20px; max-width: 860px; margin: 0 auto;
-    }
-    .comm-card { border-radius: var(--radius); padding: 36px 32px; text-align: left; }
-    .comm-card.builds { background: var(--wave); box-shadow: 0 8px 32px rgba(26,111,168,.4); }
-    .comm-card.breaks { background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.1); }
-    .comm-card-title {
-      font-family: 'Baloo 2', cursive;
-      font-size: 1.25rem; color: #fff; margin-bottom: 22px;
-      display: flex; align-items: center; gap: 10px; font-weight: 700;
-    }
-    .comm-card.breaks .comm-card-title { color: rgba(255,255,255,.45); }
-    .comm-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .comm-list li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 1rem; color: #fff; font-weight: 700;
-    }
-    .comm-card.breaks .comm-list li { color: rgba(255,255,255,.35); font-weight: 400; }
+    .dna-komunikacja-quote::before { content: '\201E'; color: var(--sky); font-style: normal; }
+    .dna-komunikacja-quote::after  { content: '\201D'; color: var(--sky); font-style: normal; }
 
     /* ── CTA ────────────────────────────────────── */
     .cta-section {
@@ -463,7 +434,6 @@
       box-shadow: 0 32px 80px rgba(11,30,61,.25);
       transform: translateY(24px) scale(.97);
       transition: transform .35s cubic-bezier(.34,1.56,.64,1);
-      position: relative;
     }
     .popup-overlay.open .popup { transform: translateY(0) scale(1); }
     .popup-header {
@@ -538,7 +508,8 @@
 
     /* ── RESPONSIVE ─────────────────────────────── */
     @media (max-width: 1024px) {
-      .dna-big-grid { grid-template-columns: repeat(3, 1fr); }
+      .dna-cards-row { grid-template-columns: repeat(3, 1fr); }
+      .dna-filary-grid { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
       .wizja-grid { grid-template-columns: 1fr; }
     }
@@ -547,10 +518,11 @@
       .nav-links, .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
       .page-hero { padding: 120px 24px 60px; }
-      .historia-section, .wizja-section, .dna-section, .comm-section, .cta-section { padding: 68px 24px; }
+      .historia-section, .wizja-section, .dna-section, .cta-section { padding: 68px 24px; }
       .historia-wrap { grid-template-columns: 1fr; gap: 56px; }
-      .dna-big-grid { grid-template-columns: repeat(2, 1fr); }
-      .comm-grid { grid-template-columns: 1fr; }
+      .dna-cards-row { grid-template-columns: repeat(2, 1fr); }
+      .dna-filary-grid { grid-template-columns: 1fr; }
+      .dna-komunikacja { padding: 40px 28px; }
       .footer-grid { grid-template-columns: 1fr; gap: 40px; }
     }
     @media (max-width: 600px) {
@@ -563,52 +535,32 @@
 </head>
 <body>
 
-<!-- ══ POPUP FORMULARZ ══════════════════════════════ -->
+<!-- ══ POPUP ════════════════════════════════════════ -->
 <div class="popup-overlay" id="popupOverlay" onclick="closePopupOnOverlay(event)">
-  <div class="popup" id="popup">
+  <div class="popup">
     <div class="popup-header">
       <span class="kicker">Zapisy 2025/2026</span>
       <h2 class="popup-title">Zapisz dziecko do szkoły</h2>
       <p class="popup-subtitle">Wypełnij formularz — skontaktujemy się w ciągu 24h</p>
       <button class="popup-close" onclick="closePopup()" aria-label="Zamknij">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div class="popup-body" id="popupForm">
       <form id="enrollForm" onsubmit="submitForm(event)" novalidate>
         <div class="form-section-label">Dane rodzica / opiekuna</div>
         <div class="form-row">
-          <div class="form-group">
-            <label for="parentName">Imię *</label>
-            <input type="text" id="parentName" placeholder="np. Anna" required />
-          </div>
-          <div class="form-group">
-            <label for="parentSurname">Nazwisko *</label>
-            <input type="text" id="parentSurname" placeholder="np. Kowalska" required />
-          </div>
+          <div class="form-group"><label for="parentName">Imię *</label><input type="text" id="parentName" placeholder="np. Anna" required /></div>
+          <div class="form-group"><label for="parentSurname">Nazwisko *</label><input type="text" id="parentSurname" placeholder="np. Kowalska" required /></div>
         </div>
         <div class="form-row" style="margin-top:14px;">
-          <div class="form-group">
-            <label for="phone">Telefon *</label>
-            <input type="tel" id="phone" placeholder="+48 500 000 000" required />
-          </div>
-          <div class="form-group">
-            <label for="email">E-mail *</label>
-            <input type="email" id="email" placeholder="anna@mail.pl" required />
-          </div>
+          <div class="form-group"><label for="phone">Telefon *</label><input type="tel" id="phone" placeholder="+48 500 000 000" required /></div>
+          <div class="form-group"><label for="email">E-mail *</label><input type="email" id="email" placeholder="anna@mail.pl" required /></div>
         </div>
         <div class="form-section-label">Dane dziecka</div>
         <div class="form-row">
-          <div class="form-group">
-            <label for="childName">Imię dziecka *</label>
-            <input type="text" id="childName" placeholder="np. Zosia" required />
-          </div>
-          <div class="form-group">
-            <label for="childYear">Rok urodzenia *</label>
-            <input type="number" id="childYear" placeholder="np. 2018" min="2014" max="2022" required />
-          </div>
+          <div class="form-group"><label for="childName">Imię dziecka *</label><input type="text" id="childName" placeholder="np. Zosia" required /></div>
+          <div class="form-group"><label for="childYear">Rok urodzenia *</label><input type="number" id="childYear" placeholder="np. 2018" min="2014" max="2022" required /></div>
         </div>
         <div class="form-row" style="margin-top:14px;">
           <div class="form-group">
@@ -625,23 +577,19 @@
             <select id="howFound">
               <option value="" disabled selected>Wybierz</option>
               <option>Polecenie znajomych</option><option>Internet / Google</option>
-              <option>Media społecznościowe</option><option>Ulotka / plakat</option>
-              <option>Inne</option>
+              <option>Media społecznościowe</option><option>Ulotka / plakat</option><option>Inne</option>
             </select>
           </div>
         </div>
         <div class="form-section-label">Pytania / wiadomość</div>
         <div class="form-row single">
-          <div class="form-group">
-            <label for="message">Napisz jeśli masz pytania (opcjonalnie)</label>
-            <textarea id="message" placeholder="Chciałabym dowiedzieć się więcej o..."></textarea>
-          </div>
+          <div class="form-group"><label for="message">Napisz jeśli masz pytania (opcjonalnie)</label><textarea id="message" placeholder="Chciałabym dowiedzieć się więcej o..."></textarea></div>
         </div>
         <div class="form-rodo">
           <input type="checkbox" id="rodo" required />
           <label for="rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych przez Chrześcijańską Szkołę Podstawową Jonasz w celu odpowiedzi na zapytanie rekrutacyjne, zgodnie z <a href="#">Polityką Prywatności</a>. *</label>
         </div>
-        <button type="submit" class="btn-submit popup-submit" id="submitBtn">
+        <button type="submit" class="btn-submit popup-submit">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           Wyślij zgłoszenie
         </button>
@@ -658,10 +606,9 @@
 </div>
 
 <!-- ══ NAVBAR ══════════════════════════════════════ -->
-<nav class="navbar scrolled" id="navbar">
+<nav class="navbar" id="navbar">
   <a href="index.html" class="nav-logo-wrap">
-    <img src="https://jonasz.edu.pl/wp-content/uploads/2026/01/logotyp-csp-jonasz.webp"
-         alt="Szkoła Jonasz" class="nav-logo-img" />
+    <img src="https://jonasz.edu.pl/wp-content/uploads/2026/01/logotyp-csp-jonasz.webp" alt="Szkoła Jonasz" class="nav-logo-img" />
   </a>
   <div class="nav-right">
     <div class="nav-langs">
@@ -676,9 +623,7 @@
     </div>
     <a href="#" class="nav-cta" onclick="openPopup(); return false;">Zapisz dziecko</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
 </nav>
@@ -701,12 +646,11 @@
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
       <span>O nas</span>
     </div>
-    <h1>O nas — <em>JONASZ = zmiana</em></h1>
-    <p class="page-hero-lead">Jesteśmy szkołą, która w centrum stawia dziecko — jego rozwój, relacje i wewnętrzną przemianę. Poznaj naszą historię i wartości.</p>
+    <h1>Stowarzyszenie Edukacyjne <em>Integracja w Łodzi</em></h1>
+    <p class="page-hero-lead">Poznaj naszą historię, wizję i wartości, które stoją za Chrześcijańską Szkołą Podstawową Jonasz.</p>
   </div>
 </section>
 
-<!-- wave divider -->
 <div class="wave-divider">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0 C360 60 1080 60 1440 0 L1440 60 L0 60 Z" fill="#F5FAFF"/>
@@ -720,8 +664,7 @@
     <div class="historia-visual">
       <div class="historia-deco"></div>
       <div class="historia-img-wrap">
-        <img src="https://jonasz.edu.pl/wp-content/uploads/2026/01/jonaszek-1200x800.jpg"
-             alt="Uczniowie Szkoły Jonasz" />
+        <img src="https://jonasz.edu.pl/wp-content/uploads/2026/01/jonaszek-1200x800.jpg" alt="Uczniowie Szkoły Jonasz" />
       </div>
       <div class="historia-badge">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -731,15 +674,7 @@
 
     <div class="historia-text">
       <span class="kicker">Nasza historia</span>
-      <h2 class="section-title">Zmiana, która zaczyna się od środka</h2>
-
-      <blockquote class="historia-blockquote">
-        Jonasz to bohater, który pod wpływem niezasłużonej łaski i życzliwości Boga, sam doświadczył wewnętrznej zmiany i — ofiarowując tę niezasłużoną łaskę i życzliwość innym — obserwował przemianę ludzi, do których został wysłany.
-      </blockquote>
-
-      <p class="section-lead" style="margin-bottom:36px;">
-        Ta opowieść jest dla nas inspiracją. Pragniemy dzieciom ofiarować przede wszystkim życzliwość — i w tej atmosferze chcemy razem się uczyć, doświadczać zmiany życia na różnych płaszczyznach.
-      </p>
+      <h2 class="section-title">Nasza historia sięga 2004 roku</h2>
 
       <div class="timeline">
         <div class="timeline-item">
@@ -747,39 +682,31 @@
           <div class="timeline-body">
             <div class="timeline-year">2004</div>
             <h4>Stowarzyszenie Edukacyjne Integracja</h4>
-            <p>Powstanie SEI w Warszawie — organizacji powołanej do wspierania kształcenia dzieci poprzez tworzenie chrześcijańskich placówek edukacyjnych.</p>
+            <p>Wówczas powstało Stowarzyszenie Edukacyjne Integracja z siedzibą w Warszawie.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot">11</div>
           <div class="timeline-body">
             <div class="timeline-year">2011</div>
-            <h4>Oddział łódzki SEI</h4>
-            <p>Założenie łódzkiego oddziału Stowarzyszenia, skupiającego się na budowaniu wspólnoty edukacyjnej opartej na wartościach chrześcijańskich.</p>
+            <h4>Łódzki oddział SEI</h4>
+            <p>Łódzki oddział SEI powstał w 2011 roku, a usamodzielnił się w roku 2016.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot">12</div>
           <div class="timeline-body">
             <div class="timeline-year">2012</div>
-            <h4>Chrześcijańskie Przedszkole JONASZEK</h4>
-            <p>Otwarcie przedszkola — pierwszej placówki, w której od samego początku zaczęto wcielać w życie filozofię edukacji z wartościami.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot">16</div>
-          <div class="timeline-body">
-            <div class="timeline-year">2016</div>
-            <h4>Samodzielność łódzkiego SEI</h4>
-            <p>Łódzki oddział usamodzielnia się i w pełni przejmuje odpowiedzialność za lokalne działania edukacyjne.</p>
+            <h4>Chrześcijańskie Przedszkole JONASZEK w Łodzi</h4>
+            <p>Pierwsza placówka edukacyjna prowadzona przez łódzki oddział SEI.</p>
           </div>
         </div>
         <div class="timeline-item highlight">
           <div class="timeline-dot">26</div>
           <div class="timeline-body">
             <div class="timeline-year">2026</div>
-            <h4>Chrześcijańska Szkoła Podstawowa JONASZ</h4>
-            <p>Otwarcie szkoły podstawowej — kolejny etap misji. Szkoła, w której prawdziwa zmiana zaczyna się od środka każdego dziecka.</p>
+            <h4>Szkoła Podstawowa JONASZ w Łodzi</h4>
+            <p>Kolejny etap misji — otwarcie Chrześcijańskiej Szkoły Podstawowej Jonasz.</p>
           </div>
         </div>
       </div>
@@ -788,7 +715,6 @@
   </div>
 </section>
 
-<!-- wave divider -->
 <div class="wave-divider">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 60 C360 0 1080 0 1440 60 L1440 0 L0 0 Z" fill="#F5FAFF"/>
@@ -798,189 +724,152 @@
 <!-- ══ WIZJA I CELE ══════════════════════════════════ -->
 <section class="wizja-section">
   <div class="wizja-inner">
-    <div class="wizja-header">
-      <span class="kicker">Fundament</span>
-      <h2 class="section-title">Wizja i cele</h2>
-      <p class="section-lead">Wszystko, co robimy, wynika z jednej prostej wizji: chcemy, aby każde dziecko, które spotka Jonasz, doświadczyło prawdziwej zmiany.</p>
-    </div>
+    <span class="kicker">Wizja i cele SEI</span>
+    <h2 class="section-title">Wizja i cele SEI oraz planowane obszary działania</h2>
 
     <div class="wizja-grid">
-      <!-- lewa: duża karta wizji -->
+      <!-- wizja -->
       <div class="wizja-main-card">
-        <span class="kicker">Nasza wizja</span>
-        <div class="wizja-label">Misja organizacji</div>
-        <div class="wizja-statement">Przemiana <em>tych,<br/>którym służymy</em></div>
-        <p>Wierzymy, że każde dziecko niesie w sobie ogromny potencjał. Naszym zadaniem jest stworzyć środowisko, w którym może on w pełni rozkwitnąć — przez relacje budowane na prawdzie, życzliwości i wierze w drugiego człowieka.</p>
+        <span class="kicker">Wizja</span>
+        <div class="wizja-statement">Przemiana tych,<br/><em>którym służymy</em></div>
       </div>
 
-      <!-- prawa: cele -->
+      <!-- cele -->
       <div class="cele-stack">
         <div class="cel-card">
           <div class="cel-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="cel-body">
-            <h4>Upowszechnianie dobrych wartości</h4>
-            <p>Kształtujemy postawy oparte na życzliwości, prawdzie i odpowiedzialności za innych.</p>
-          </div>
+          <div class="cel-body"><h4>Upowszechnianie dobrych wartości i postaw</h4></div>
         </div>
         <div class="cel-card">
           <div class="cel-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
           </div>
-          <div class="cel-body">
-            <h4>Rozwój charakteru i talentów</h4>
-            <p>Każde dziecko jest wyjątkowe. Pomagamy odkrywać i rozwijać jego indywidualne dary.</p>
-          </div>
+          <div class="cel-body"><h4>Pomoc w rozwijaniu charakteru i talentów</h4></div>
         </div>
         <div class="cel-card">
           <div class="cel-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
-          <div class="cel-body">
-            <h4>Przestrzeń do wspólnych relacji</h4>
-            <p>Tworzymy środowisko, gdzie dzieci, rodzice i nauczyciele tworzą prawdziwą wspólnotę.</p>
-          </div>
+          <div class="cel-body"><h4>Udostępnianie płaszczyzny do wspólnych relacji i przedsięwzięć</h4></div>
         </div>
         <div class="cel-card">
           <div class="cel-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <div class="cel-body">
-            <h4>Kształtowanie przywódców</h4>
-            <p>Przygotowujemy młodych ludzi do wywierania pozytywnego wpływu na otaczający ich świat.</p>
-          </div>
+          <div class="cel-body"><h4>Kształtowanie przywódców</h4></div>
         </div>
+      </div>
+    </div>
+
+    <!-- obszary działania -->
+    <div class="obszary">
+      <span style="font-weight:700;color:var(--gray);font-size:.875rem;align-self:center;">Obszary działania:</span>
+      <div class="obszar-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Chrześcijańskie Przedszkole JONASZEK
+      </div>
+      <div class="obszar-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Chrześcijańska Szkoła JONASZ
       </div>
     </div>
   </div>
 </section>
 
-<!-- wave divider -->
 <div class="wave-divider">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0 C360 60 1080 60 1440 0 L1440 60 L0 60 Z" fill="#ffffff"/>
   </svg>
 </div>
 
-<!-- ══ DNA DZIECKA ═══════════════════════════════════ -->
+<!-- ══ DNA ════════════════════════════════════════════ -->
 <section class="dna-section dots-bg">
   <div class="dna-inner">
-    <div class="dna-header">
-      <span class="kicker">DNA dziecka</span>
-      <h2 class="section-title">Wszechstronny rozwój</h2>
-      <p class="section-lead">Każde dziecko — wszechstronnie rozwinięte. Dbamy o pełnię człowieczeństwa na wszystkich płaszczyznach.</p>
-    </div>
 
-    <div class="dna-big-grid">
+    <!-- DNA dziecka -->
+    <span class="kicker">DNA dziecka</span>
+    <h2 class="section-title">Każde dziecko — wszechstronnie rozwinięte</h2>
+
+    <div class="dna-cards-row">
       <div class="dna-card">
         <div class="dna-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         </div>
         <h3>Duchowo</h3>
-        <p>Kształtujemy tożsamość opartą na wartościach, wierze i poszukiwaniu sensu.</p>
       </div>
       <div class="dna-card">
         <div class="dna-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
         </div>
         <h3>Poznawczo</h3>
-        <p>Rozwijamy ciekawość świata, krytyczne myślenie i radość z odkrywania wiedzy.</p>
       </div>
       <div class="dna-card">
         <div class="dna-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
         </div>
         <h3>Emocjonalnie</h3>
-        <p>Uczymy rozumieć i wyrażać emocje, budując dojrzałość i odporność psychiczną.</p>
       </div>
       <div class="dna-card">
         <div class="dna-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <h3>Fizycznie</h3>
-        <p>Dbamy o zdrowie i aktywność — ciało jest tak samo ważne jak umysł i duch.</p>
       </div>
       <div class="dna-card">
         <div class="dna-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wave)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
         <h3>Społecznie</h3>
-        <p>Budujemy umiejętność współpracy, empatii i tworzenia pozytywnych relacji z innymi.</p>
       </div>
     </div>
+
+    <!-- DNA edukacja z wartościami -->
+    <div class="dna-filary">
+      <div class="dna-filary-header">
+        <span class="kicker">DNA edukacja z wartościami</span>
+      </div>
+      <div class="dna-filary-grid">
+        <div class="filar-card">
+          <div class="filar-num">01</div>
+          <h3>Zdrowe relacje</h3>
+          <div class="filar-tags">
+            <span class="filar-tag">Wspólnota</span>
+            <span class="filar-tag">Prawda</span>
+            <span class="filar-tag">Prośba</span>
+            <span class="filar-tag">Wdzięczność</span>
+          </div>
+        </div>
+        <div class="filar-card">
+          <div class="filar-num">02</div>
+          <h3>Inicjatywy</h3>
+          <div class="filar-tags">
+            <span class="filar-tag">Kreatywność</span>
+            <span class="filar-tag">Analiza</span>
+          </div>
+        </div>
+        <div class="filar-card">
+          <div class="filar-num">03</div>
+          <h3>Wpływ</h3>
+          <div class="filar-tags">
+            <span class="filar-tag">Odpowiedzialność</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DNA wartościowa komunikacja -->
+    <div class="dna-komunikacja">
+      <span class="kicker">DNA wartościowa komunikacja</span>
+      <h3>Słowo ma ogromne znaczenie</h3>
+      <p class="dna-komunikacja-quote">Słowo ma ogromne znaczenie — jest niczym skalpel w ręku chirurga</p>
+    </div>
+
   </div>
 </section>
 
-<!-- wave divider -->
-<div class="wave-divider">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 60 C360 0 1080 0 1440 60 L1440 0 L0 0 Z" fill="#F5FAFF"/>
-  </svg>
-</div>
-
-<!-- ══ KOMUNIKACJA ═══════════════════════════════════ -->
-<section class="comm-section">
-  <div class="comm-inner">
-    <span class="kicker kicker-dark">Wartościowa komunikacja</span>
-    <h2 class="section-title">Słowo ma ogromne znaczenie</h2>
-    <p class="comm-quote-big">Słowo ma ogromne znaczenie — jest niczym skalpel w ręku chirurga</p>
-    <p class="comm-attr">Jedno z kluczowych przekonań naszej szkoły</p>
-
-    <div class="comm-grid">
-      <div class="comm-card builds">
-        <div class="comm-card-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Słowo buduje
-        </div>
-        <ul class="comm-list">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BAE6FD" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Wspólnota i przynależność
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BAE6FD" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Pewność siebie i odwaga
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BAE6FD" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Wzajemne zaufanie
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BAE6FD" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Motywację do działania
-          </li>
-        </ul>
-      </div>
-      <div class="comm-card breaks">
-        <div class="comm-card-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          Słowo rani
-        </div>
-        <ul class="comm-list">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            Poczucie wykluczenia
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            Lęk i brak pewności siebie
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            Zamknięcie i izolację
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            Trwały ślad w sercu dziecka
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CTA ═══════════════════════════════════════════ -->
+<!-- ══ CTA ════════════════════════════════════════════ -->
 <section class="cta-section">
   <div class="cta-blob-a"></div>
   <div class="cta-blob-b"></div>
@@ -1005,19 +894,12 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="https://jonasz.edu.pl/wp-content/uploads/2026/01/logotyp-csp-jonasz.webp"
-           alt="Szkoła Jonasz" class="footer-logo-img" />
+      <img src="https://jonasz.edu.pl/wp-content/uploads/2026/01/logotyp-csp-jonasz.webp" alt="Szkoła Jonasz" class="footer-logo-img" />
       <p>Szkoła, w której zaczyna się prawdziwa zmiana. Wspólnota budowana na życzliwości, wartościach i wierze w potencjał każdego dziecka.</p>
       <div class="footer-social">
-        <a href="#" class="social-btn" aria-label="Facebook">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-        </a>
-        <a href="#" class="social-btn" aria-label="Instagram">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a href="#" class="social-btn" aria-label="YouTube">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-        </a>
+        <a href="#" class="social-btn" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
       </div>
     </div>
     <div>
@@ -1057,18 +939,9 @@
 </footer>
 
 <script>
-  // Navbar scroll
+  // Navbar zawsze biała na podstronie
   const navbar = document.getElementById('navbar');
-  // On about page navbar starts white (scrolled)
-  function updateNavbar() {
-    if (window.scrollY > 10) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.add('scrolled'); // always white on subpage
-    }
-  }
-  window.addEventListener('scroll', updateNavbar);
-  updateNavbar();
+  window.addEventListener('scroll', () => {});
 
   // Hamburger
   const hamburger = document.getElementById('hamburger');
@@ -1093,18 +966,16 @@
     el.classList.add('active');
   }
 
-  // Parallax on page hero
+  // Parallax
   const heroBg = document.getElementById('heroBg');
   function updateParallax() {
-    if (!heroBg) return;
-    heroBg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+    if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
   }
   window.addEventListener('scroll', updateParallax, { passive: true });
   updateParallax();
 
-  // ── POPUP ──────────────────────────────────────────
+  // Popup
   const overlay = document.getElementById('popupOverlay');
-
   function openPopup() {
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1112,20 +983,14 @@
     document.getElementById('popupSuccess').classList.remove('show');
     document.getElementById('enrollForm').reset();
   }
-
   function closePopup() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
-
   function closePopupOnOverlay(e) {
     if (e.target === overlay) closePopup();
   }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closePopup();
-  });
-
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
   function submitForm(e) {
     e.preventDefault();
     const form = e.target;
@@ -1139,8 +1004,7 @@
     });
     if (!valid) return;
     const btn = form.querySelector('.popup-submit');
-    btn.textContent = 'Wysyłanie…';
-    btn.disabled = true;
+    btn.textContent = 'Wysyłanie…'; btn.disabled = true;
     setTimeout(() => {
       document.getElementById('popupForm').style.display = 'none';
       document.getElementById('popupSuccess').classList.add('show');
