@@ -155,12 +155,16 @@
     ════════════════════════════════════════════════ */
     .hero {
       min-height: 100vh;
-      background:
-        linear-gradient(160deg, rgba(11,30,61,.58) 0%, rgba(14,77,123,.38) 55%, rgba(11,30,61,.22) 100%),
-        url('szkola.webp') center/cover no-repeat;
+      background: linear-gradient(160deg, rgba(11,30,61,.58) 0%, rgba(14,77,123,.38) 55%, rgba(11,30,61,.22) 100%);
       display: flex; align-items: center;
       padding: 140px 56px 60px;
       position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: -15% 0;
+      background: url('szkola.webp') center/cover no-repeat;
+      will-change: transform;
+      z-index: 0;
     }
     .hero-wave-deco {
       position: absolute; bottom: 60px; right: -20px;
@@ -907,6 +911,7 @@
 
 <!-- ══ HERO ════════════════════════════════════════ -->
 <section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
   <svg class="hero-wave-deco" viewBox="0 0 600 200" fill="none">
     <path d="M0 100 C150 0,300 200,450 100 S600 0,750 100" stroke="white" stroke-width="2" fill="none"/>
     <path d="M0 130 C150 30,300 230,450 130 S600 30,750 130" stroke="white" stroke-width="1.5" fill="none"/>
@@ -1376,6 +1381,16 @@
       window.scrollTo({ top: t.offsetTop - navbar.offsetHeight - 16, behavior: 'smooth' });
     });
   });
+
+  // ── PARALLAX ───────────────────────────────────────
+  const heroBg = document.getElementById('heroBg');
+  function updateParallax() {
+    if (!heroBg) return;
+    const offset = window.scrollY * 0.35;
+    heroBg.style.transform = `translateY(${offset}px)`;
+  }
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
 
   // ── POPUP ──────────────────────────────────────────
   const overlay = document.getElementById('popupOverlay');
