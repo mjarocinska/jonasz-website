@@ -114,13 +114,15 @@
     .navbar.scrolled .nav-langs span.active { color: var(--ocean); background: var(--foam); }
 
     .nav-cta {
-      background: #fff; color: var(--ocean);
-      padding: 10px 22px; border-radius: 50px;
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.7);
+      padding: 9px 22px; border-radius: 50px;
       font-weight: 700; text-decoration: none; font-size: .875rem;
-      transition: background .2s, color .2s, transform .2s; white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+      transition: background .2s, color .2s, border-color .2s, transform .2s; white-space: nowrap;
     }
-    .nav-cta:hover { background: var(--foam); transform: translateY(-1px); }
+    .nav-cta:hover { background: rgba(255,255,255,.15); transform: translateY(-1px); }
+    .navbar.scrolled .nav-cta { color: var(--ocean); border-color: var(--ocean); }
+    .navbar.scrolled .nav-cta:hover { background: var(--foam); }
 
     .nav-hamburger {
       display: none; background: none; border: none;
