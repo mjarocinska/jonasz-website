@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+.claude/backups/
+.claude/projects/
+.claude/sessions/
+.claude/shell-snapshots/
+.claude/skills/
+.claude/plugins/
+.claude/settings.local.json

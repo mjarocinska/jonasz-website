@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Jonasz Redesign (static)",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "3000", "--directory", "/Users/mjj"],
+      "port": 3000
+    },
+    {
+      "name": "Illustrator MCP Server",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "--project", "/Users/mjj/code/mcp/illustrator-mcp-server", "illustrator"],
+      "port": 8080
+    }
+  ]
+}
