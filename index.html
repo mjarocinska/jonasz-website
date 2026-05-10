@@ -610,9 +610,264 @@
       .footer-grid { grid-template-columns: 1fr; gap: 40px; }
       .trust-bar { padding: 20px 24px; }
     }
+    /* ════════════════════════════════════════════════
+       POPUP FORMULARZ ZAPISU
+    ════════════════════════════════════════════════ */
+    .popup-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(11,30,61,.65);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .popup-overlay.open { opacity: 1; pointer-events: all; }
+
+    .popup {
+      background: #fff; border-radius: 28px;
+      width: 100%; max-width: 620px;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 32px 80px rgba(11,30,61,.25);
+      transform: translateY(24px) scale(.97);
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+      position: relative;
+    }
+    .popup-overlay.open .popup { transform: translateY(0) scale(1); }
+
+    .popup-header {
+      background: linear-gradient(135deg, var(--ocean), var(--navy));
+      border-radius: 28px 28px 0 0;
+      padding: 32px 36px 28px;
+      position: relative;
+    }
+    .popup-header .kicker { background: rgba(255,255,255,.15); color: #BAE6FD; margin-bottom: 8px; }
+    .popup-title {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.7rem; font-weight: 800; color: #fff; margin: 0;
+    }
+    .popup-subtitle { color: rgba(255,255,255,.7); font-size: .9rem; margin-top: 6px; }
+    .popup-close {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,.15); border: none; cursor: pointer;
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; transition: background .2s;
+    }
+    .popup-close:hover { background: rgba(255,255,255,.25); }
+
+    .popup-body { padding: 32px 36px 36px; }
+
+    .form-section-label {
+      font-family: 'Baloo 2', cursive;
+      font-size: .8rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--wave);
+      margin: 24px 0 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .form-section-label:first-child { margin-top: 0; }
+    .form-section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--foam);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-row.single { grid-template-columns: 1fr; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: .8rem; font-weight: 700; color: var(--navy);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 2px solid var(--foam); border-radius: 14px;
+      padding: 11px 16px; font-size: .9rem; font-family: 'Nunito', sans-serif;
+      color: var(--navy); background: var(--bg);
+      transition: border-color .2s, box-shadow .2s; outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(59,157,214,.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 88px; }
+    .form-group select { appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235A7A9A' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .form-rodo {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-top: 20px; padding: 16px; border-radius: 14px;
+      background: var(--foam);
+    }
+    .form-rodo input[type="checkbox"] {
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px;
+      accent-color: var(--ocean); cursor: pointer;
+    }
+    .form-rodo label {
+      font-size: .8rem; color: var(--gray); line-height: 1.5; cursor: pointer;
+    }
+    .form-rodo label a { color: var(--wave); text-decoration: underline; }
+
+    .btn-submit {
+      width: 100%; margin-top: 20px;
+      background: var(--ocean); color: #fff;
+      padding: 15px; border-radius: 50px; border: none;
+      font-family: 'Baloo 2', cursive; font-size: 1.05rem; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 6px 20px rgba(14,77,123,.25);
+    }
+    .btn-submit:hover { background: var(--wave); transform: translateY(-2px); }
+    .btn-submit:disabled { background: var(--gray); cursor: not-allowed; transform: none; }
+
+    /* sukces */
+    .popup-success {
+      display: none; text-align: center; padding: 48px 36px;
+    }
+    .popup-success.show { display: block; }
+    .popup-success-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--foam); margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .popup-success h3 {
+      font-family: 'Baloo 2', cursive; font-size: 1.5rem;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .popup-success p { color: var(--gray); font-size: .95rem; line-height: 1.7; }
+
+    @media (max-width: 600px) {
+      .popup { border-radius: 20px; }
+      .popup-header { padding: 24px 24px 20px; border-radius: 20px 20px 0 0; }
+      .popup-body { padding: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+
+<!-- ══ POPUP FORMULARZ ══════════════════════════════ -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopupOnOverlay(event)">
+  <div class="popup" id="popup">
+    <div class="popup-header">
+      <span class="kicker">Zapisy 2025/2026</span>
+      <h2 class="popup-title">Zapisz dziecko do szkoły</h2>
+      <p class="popup-subtitle">Wypełnij formularz — skontaktujemy się w ciągu 24h</p>
+      <button class="popup-close" onclick="closePopup()" aria-label="Zamknij">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="popup-body" id="popupForm">
+      <form id="enrollForm" onsubmit="submitForm(event)" novalidate>
+
+        <!-- RODZIC -->
+        <div class="form-section-label">Dane rodzica / opiekuna</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="parentName">Imię *</label>
+            <input type="text" id="parentName" placeholder="np. Anna" required />
+          </div>
+          <div class="form-group">
+            <label for="parentSurname">Nazwisko *</label>
+            <input type="text" id="parentSurname" placeholder="np. Kowalska" required />
+          </div>
+        </div>
+        <div class="form-row" style="margin-top:14px;">
+          <div class="form-group">
+            <label for="phone">Telefon *</label>
+            <input type="tel" id="phone" placeholder="+48 500 000 000" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" placeholder="anna@mail.pl" required />
+          </div>
+        </div>
+
+        <!-- DZIECKO -->
+        <div class="form-section-label">Dane dziecka</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="childName">Imię dziecka *</label>
+            <input type="text" id="childName" placeholder="np. Zosia" required />
+          </div>
+          <div class="form-group">
+            <label for="childYear">Rok urodzenia *</label>
+            <input type="number" id="childYear" placeholder="np. 2018" min="2014" max="2022" required />
+          </div>
+        </div>
+        <div class="form-row" style="margin-top:14px;">
+          <div class="form-group">
+            <label for="grade">Do której klasy? *</label>
+            <select id="grade" required>
+              <option value="" disabled selected>Wybierz klasę</option>
+              <option>Klasa 1</option>
+              <option>Klasa 2</option>
+              <option>Klasa 3</option>
+              <option>Klasa 4</option>
+              <option>Klasa 5</option>
+              <option>Klasa 6</option>
+              <option>Klasa 7</option>
+              <option>Klasa 8</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="howFound">Skąd o nas wiesz?</label>
+            <select id="howFound">
+              <option value="" disabled selected>Wybierz</option>
+              <option>Polecenie znajomych</option>
+              <option>Internet / Google</option>
+              <option>Media społecznościowe</option>
+              <option>Ulotka / plakat</option>
+              <option>Inne</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- WIADOMOŚĆ -->
+        <div class="form-section-label">Pytania / wiadomość</div>
+        <div class="form-row single">
+          <div class="form-group">
+            <label for="message">Napisz jeśli masz pytania (opcjonalnie)</label>
+            <textarea id="message" placeholder="Chciałabym dowiedzieć się więcej o..."></textarea>
+          </div>
+        </div>
+
+        <!-- RODO -->
+        <div class="form-rodo">
+          <input type="checkbox" id="rodo" required />
+          <label for="rodo">
+            Wyrażam zgodę na przetwarzanie moich danych osobowych przez Chrześcijańską Szkołę Podstawową Jonasz w celu odpowiedzi na zapytanie rekrutacyjne, zgodnie z <a href="#">Polityką Prywatności</a>. *
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit popup-submit" id="submitBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          Wyślij zgłoszenie
+        </button>
+      </form>
+    </div>
+
+    <!-- Ekran sukcesu -->
+    <div class="popup-success" id="popupSuccess">
+      <div class="popup-success-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1A6FA8" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h3>Zgłoszenie wysłane!</h3>
+      <p>Dziękujemy za zainteresowanie Szkołą Jonasz.<br/>Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ══ NAVBAR ══════════════════════════════════════ -->
 <nav class="navbar" id="navbar">
@@ -632,7 +887,7 @@
       <a href="#dna"     class="nav-link" data-section="dna">DNA dziecka</a>
       <a href="#kontakt" class="nav-link" data-section="kontakt">Kontakt</a>
     </div>
-    <a href="#cta" class="nav-cta">Zapisz dziecko</a>
+    <a href="#" class="nav-cta" onclick="openPopup(); return false;">Zapisz dziecko</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
@@ -647,7 +902,7 @@
   <a href="#dna"     class="mobile-link" onclick="closeMobile()">DNA dziecka</a>
   <a href="#pricing" class="mobile-link" onclick="closeMobile()">Opłaty</a>
   <a href="#kontakt" class="mobile-link" onclick="closeMobile()">Kontakt</a>
-  <a href="#cta"     class="mobile-cta"  onclick="closeMobile()">Zapisz dziecko →</a>
+  <a href="#" class="mobile-cta" onclick="closeMobile(); openPopup(); return false;">Zapisz dziecko →</a>
 </div>
 
 <!-- ══ HERO ════════════════════════════════════════ -->
@@ -667,7 +922,7 @@
     <h1>Szkoła, w której zaczyna się <em>prawdziwa zmiana</em></h1>
     <p class="hero-lead">Pragniemy dzieciom ofiarować przede wszystkim życzliwość — i w tej atmosferze chcemy razem się uczyć, doświadczać zmiany życia na różnych płaszczyznach.</p>
     <div class="hero-actions">
-      <a href="#cta" class="btn-primary">
+      <a href="#" class="btn-primary" onclick="openPopup(); return false;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         Zapisz dziecko
       </a>
@@ -999,9 +1254,9 @@
     <h2 class="section-title section-title-white">Gotowi na prawdziwą zmianę?</h2>
     <p>Skontaktuj się z nami i umów wizytę w szkole. Chętnie odpowiemy na wszystkie pytania dotyczące zapisów.</p>
     <div class="cta-actions">
-      <a href="mailto:jonasz@centrumedukacyjne.com" class="btn-white">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Napisz do nas
+      <a href="#" class="btn-white" onclick="openPopup(); return false;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Zapisz dziecko
       </a>
       <a href="tel:+48505915001" class="btn-ghost">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.18 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.17 6.17l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1121,6 +1376,59 @@
       window.scrollTo({ top: t.offsetTop - navbar.offsetHeight - 16, behavior: 'smooth' });
     });
   });
+
+  // ── POPUP ──────────────────────────────────────────
+  const overlay = document.getElementById('popupOverlay');
+
+  function openPopup() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // reset form state
+    document.getElementById('popupForm').style.display = '';
+    document.getElementById('popupSuccess').classList.remove('show');
+    document.getElementById('enrollForm').reset();
+  }
+
+  function closePopup() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closePopupOnOverlay(e) {
+    if (e.target === overlay) closePopup();
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closePopup();
+  });
+
+  function submitForm(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    // Basic validation — check required fields
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(el => {
+      el.style.borderColor = '';
+      if (!el.value.trim() || (el.type === 'checkbox' && !el.checked)) {
+        el.style.borderColor = '#e74c3c';
+        valid = false;
+      }
+    });
+    if (!valid) return;
+
+    // Simulate sending (replace with actual fetch/mailto when backend is ready)
+    const btn = form.querySelector('.popup-submit');
+    btn.textContent = 'Wysyłanie…';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      document.getElementById('popupForm').style.display = 'none';
+      document.getElementById('popupSuccess').classList.add('show');
+    }, 900);
+  }
 </script>
 </body>
 </html>
